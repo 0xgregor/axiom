@@ -305,6 +305,7 @@ merge_output() {
 
 ###########################################################################################################
 # Declare defaut variables
+starttime=$(date +"%F-TIME-%T")
 wordlist=""
 module=""
 ext="default"
@@ -762,7 +763,7 @@ fi
 #
 echo -e "${Blue}Module [ $module $args ] | Time: [ $time ] | Input: [ $lines targets ]${Color_Off}"
 echo -e "${BGreen}Output saved to '${Blue}$outfile${BGreen}'! Local logs saved to '${Blue}$AXIOM_PATH/logs/$uid${BGreen}'! ${BGreen}Remote logs saved to '${Blue}/home/op/scan/$uid${BGreen}'!"
-echo "{\"module\":\"$module\",\"args\":\"$args\",\"targets\":\"$lines\",\"results\":\"$res\",\"seconds\":\"$runtime\",\"instances\":\"$total_instances\",\"commmand\":\"$command\",\"time\":\"$time\"}" >> $AXIOM_PATH/stats.log
+echo "{\"module\":\"$module\",\"args\":\"$args\",\"targets\":\"$lines\",\"results\":\"$res\",\"seconds\":\"$runtime\",\"instances\":\"$total_instances\",\"commmand\":\"$command\",\"scanuid\":\"$uid\",\"time\":\"$time\",\"start-time\":\"$starttime\"}"  
 kill -9 $tailPID
 stty sane
 tput init
